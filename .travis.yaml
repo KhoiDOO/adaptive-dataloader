@@ -7,8 +7,8 @@ before_install:
   - python --version
   - pip install -U pip
 
-# install:
-#   - pip install -r requirements.txt
+install:
+  - pip install -r requirements.txt 
 
 script:
   - python -m unittest test/dataset_test.py
