@@ -3,31 +3,20 @@ sys.path.append(os.path.join("/".join(os.path.dirname(__file__).split("/")[:-1])
 import torch
 from torch.utils.data import Dataset
 from augment.aug import LargeAugmentation
-from dlake_core.core import DlakeInterface
+from core_dataset import CoreDataset
 
-class Mnist(Dataset):
+class Mnist(Dataset, CoreDataset):
     def __init__(self, 
                  augment:LargeAugmentation = None,
                  subset = "test",
                  ratio = [0.8, 0.2],
-                 categorical = True) -> None:
-        super().__init__()
+                 categorical = True,
+                 access_method = "stream") -> None:
+        super().__init__(dataset_name="mnist", subset=subset, access_method=access_method,ratio=ratio)
         self.augment: LargeAugmentation = augment
-        self.categorical = categorical
-        
-        if subset == "train":
-            self.ds, _ = DlakeInterface().get_dataset(dataset_name="mnist", subset="train").random_split(ratio)
-        elif subset == "val":
-            _, self.ds = DlakeInterface().get_dataset(dataset_name="mnist", subset="train").random_split(ratio)
-        elif subset == "test":
-            self.ds = DlakeInterface().get_dataset(dataset_name="mnist", subset="test")
-        else:
-            raise Exception(f"subset must be train, val or test but {subset} found instead")    
+        self.categorical = categorical  
         
         self.num_class = 10
-    
-    def get_meta(self):
-        return self.metadata
         
     def __getitem__(self, index):
         img = self.ds[index]["images"].data()["value"]
@@ -50,7 +39,8 @@ if __name__ == "__main__":
         ran_crop = 0,
         ran_crop_width = 10,
         ran_crop_height = 10
-    ))
+    ),
+                  access_method="download")
     
     img, label = mnist[0]
     print(img.shape)
