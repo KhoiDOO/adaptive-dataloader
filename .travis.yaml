@@ -15,7 +15,7 @@ script:
 
 deploy:
   provider: pypi
-  username: "KohiDO"
+  username: "__token__"
   password: "$pypi-AgEIcHlwaS5vcmcCJDE1NzViMDBjLTA2NjEtNGY2Ny1iNTM0LTg5MmRkM2YyYjc4YwACGFsxLFsiYWRhcHRpdmUtZGF0YXNldCJdXQACLFsyLFsiNDJlNzc3NzItNGZjNS00MThiLTg0NzUtZGIwMTQ0Zjc2ZjAxIl1dAAAGICeM0OlOroZ63KxDbTN0ECor0L_N3iTAYWgrp8rnkuNd"
   on:
     branch: main
