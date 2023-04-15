@@ -1,2 +1,3 @@
 from adaptive_dataset.augment.aug import LargeAugmentation
-from dlake_core.core import DlakeInterface
+from adaptive_dataset.augment.aug import SegAumentation
+from adaptive_dataset.dlake_core.core import DlakeInterface

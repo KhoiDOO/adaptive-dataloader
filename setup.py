@@ -14,12 +14,12 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
 # This call to setup() does all the work
 setup(
-    name="adaptive-dataloader",
+    name="adaptive_dataset",
     version="0.1.1",
     description="Demo library",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://medium-multiply.readthedocs.io/",
+    url="",
     author="KhoiDOO",
     author_email="khoido8899@gmail.com",
     license="MIT",
@@ -34,12 +34,12 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent"
     ],
-    packages=["adaptive-dataloader"],
+    packages=["adaptive_dataset"],
     include_package_data=True,
     install_requires=[
         "pandas",
         "opencv-python==4.6.0.66",
-        "deeplake",
+        "deeplake[enterprise]",
         "albumentations"
         ]
 )
